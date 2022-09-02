@@ -20,7 +20,7 @@ let propellerHatImg = document.getElementById("propeller-hat");
 let plantHatImg = document.getElementById("plant-hat");
 let shirtpantsOutfitImg = document.getElementById("shirtpants-outfit");
 let dripOutfitImg = document.getElementById("drip-outfit");
-let amogusOutfitImg = document.getElementById("amogus-outfit");
+// let amogusOutfitImg = document.getElementById("amogus-outfit");
 
 
 document.addEventListener("mousemove", mousemovemanager)
@@ -37,13 +37,20 @@ function loop() {
 
     if (faceImg != "") {
         ctx.drawImage(faceImg, 275, 45);
+        if (faceImg === sadFaceImg){
+            ctx.drawImage(sadFaceImg, 500, 100)
+        }
     }
 
     if (outfitImg != "") {
         ctx.drawImage(outfitImg, 275, 45);
     }
+
     if (hatImg != "") {
         ctx.drawImage(hatImg, 275, 45);
+        if (hatImg === topHatImg){
+            ctx.drawImage(topHatImg, 275, 100)
+        }
     }
 
     
@@ -61,7 +68,7 @@ function mousemovemanager(event) {
     let cnvRect = cnv.getBoundingClientRect();
     mousex = event.x - cnvRect.x;
     mousey = event.y - cnvRect.y;
-    console.log(mousey, mousex)
+    console.log(mousex, mousey)
 }
 
 function mouseupmanager() {
@@ -96,10 +103,11 @@ function mousedownmanager() {
         let outfitProbability = Math.random()
         if (outfitProbability < 0.75) {
             outfitImg = shirtpantsOutfitImg
-        } else if (outfitProbability < 0.76) {
-            outfitImg = dripOutfitImg
         } else {
-            outfitImg = amogusOutfitImg
+            outfitImg = dripOutfitImg
         }
-    }
+        // } else {
+        //     outfitImg = amogusOutfitImg
+        // }
+}
 }
